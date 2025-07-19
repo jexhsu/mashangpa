@@ -12,11 +12,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 class BaseProblemClient:
     BASE_URL = "https://www.mashangpa.com/api/problem-detail"
     SESSION_ID = "8ef7dlbp3dklennrrlml3iw160k3lpti"
-    USER_AGENT = (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/114.0.0.0 Safari/537.36"
-    )
 
     def __init__(self, problem_id):
         self.problem_id = problem_id
@@ -25,7 +20,6 @@ class BaseProblemClient:
         referer_url = f"{self.BASE_URL}/{self.problem_id}/"
         self.session.headers.update(
             {
-                "User-Agent": self.USER_AGENT,
                 "Referer": referer_url,
             }
         )
