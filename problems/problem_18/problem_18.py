@@ -17,10 +17,9 @@ class Problem18Client(BaseProblemClient):
             text=True,
         )
         params = json.loads(result)
-        extra_params = {"page": page}
         data = self.make_request(
+            page=page,
             extra_headers={"M": str(params["m"])},
-            extra_params=extra_params,
         )
         return sum(data.get("current_array", []))
 

@@ -14,8 +14,8 @@ class Problem11Client(BaseProblemClient):
             text=True,
         )
         params = json.loads(result)
-        extra_params = {"page": page, "_ts": str(params["e"]), "m": str(params["f"])}
-        data = self.make_request(extra_params=extra_params)
+        extra_params = {"_ts": str(params["e"]), "m": str(params["f"])}
+        data = self.make_request(page=page, extra_params=extra_params)
         return sum(data.get("current_array", []))
 
     def calculate_total(self):

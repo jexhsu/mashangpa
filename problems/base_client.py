@@ -1,17 +1,19 @@
 import requests
 import hashlib
 import json
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES, DES3
 from Crypto.Util.Padding import pad, unpad
 from binascii import unhexlify
 import urllib3
+import base64
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 class BaseProblemClient:
     BASE_URL = "https://www.mashangpa.com/api/problem-detail"
-    SESSION_ID = "8ef7dlbp3dklennrrlml3iw160k3lpti"
+    SESSION_ID = "tldwwuxakwfx6pqvgxksm4c172h4b5t5"
+    USER_AGEN = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
 
     def __init__(self, problem_id):
         self.problem_id = problem_id
@@ -21,6 +23,7 @@ class BaseProblemClient:
         self.session.headers.update(
             {
                 "Referer": referer_url,
+                "User-Agent": self.USER_AGEN,
             }
         )
         self.session.verify = False
@@ -54,3 +57,13 @@ class BaseProblemClient:
         cipher = AES.new(key, AES.MODE_CBC, iv)
         decrypted = cipher.decrypt(unhexlify(encrypted_data))
         return unpad(decrypted, AES.block_size).decode()
+
+    @staticmethod
+    def des3_decrypt(cipher_text_base64: str, key: str, iv: str) -> str:
+        key_bytes = key.encode("utf-8")
+        iv_bytes = iv.encode("utf-8")
+        cipher_bytes = base64.b64decode(cipher_text_base64)
+        cipher = DES3.new(key_bytes, DES3.MODE_CBC, iv_bytes)
+        decrypted = cipher.decrypt(cipher_bytes)
+        plaintext = unpad(decrypted, DES3.block_size)
+        return plaintext.decode("utf-8")

@@ -1,25 +1,18 @@
-import subprocess, json
-
+from datetime import datetime
+import json
 from problems.base_client import BaseProblemClient
 
 
-# https://deobfuscate.relative.im
-class Problem15Client(BaseProblemClient):
+class Problem19Client(BaseProblemClient):
+    iv = datetime.now().strftime("%Y%m%d")
+
     def __init__(self):
-        super().__init__(15)
+        super().__init__(19)
 
     def get_page_sum(self, page):
-        result = subprocess.check_output(
-            [
-                "node",
-                "problems/problem_15/generate_params.js",
-            ],
-            text=True,
-        )
-        params = json.loads(result)
-        self.session.cookies.set("v", str(params["l"]))
         data = self.make_request(page=page)
-        return sum(data.get("current_array", []))
+        decrypted = self.des3_decrypt(data["r"], data["k"], self.iv)
+        return sum(json.loads(decrypted).get("current_array", []))
 
     def calculate_total(self):
         total = 0
@@ -31,7 +24,7 @@ class Problem15Client(BaseProblemClient):
 
 
 if __name__ == "__main__":
-    client = Problem15Client()
+    client = Problem19Client()
     total = client.calculate_total()
     print("\n=== FINAL RESULT ===")
     print(f"Total sum = {total}")
