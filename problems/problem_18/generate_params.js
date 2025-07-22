@@ -523,69 +523,6 @@ encode = function (e, n) {
     var x = r[i(728, "(5h(")](void 0 === n ? "undefined" : "function", r[i(432, "k([F")])
         ? Math[s(-172, "5**I")](r[s(-365, "7s0V")](Math[i(474, "Wbwc")](), 64))
         : -1;
-    for (m = 0; r[i(494, "ea1u")](m, e[s(-70, "HyKD")]); m = o[s(-394, "8Oiv")])
-        for (var g = r[i(697, "!&EH")][s(-374, "1F4e")]("|"), b = 0; ; ) {
-            switch (g[b++]) {
-                case "0":
-                    f = r[i(412, "K)F[")](a["_\xea"][r[i(665, "FH!j")](a[s(-288, "eoa[")], 2)], 2);
-                    continue;
-                case "1":
-                    p = r[s(-317, "iU!(")](
-                        r[i(700, "lqr!")](
-                            r[s(-332, "5**I")](a["_\xea"][r[i(634, "#FdB")](a[i(568, "(5h(")], 1)], 15),
-                            2,
-                        ),
-                        r[s(-292, "QQD8")](a["_\xea"][a[i(698, "!&EH")]], 6),
-                    );
-                    continue;
-                case "2":
-                    c = r[s(-164, ")FA3")](
-                        r[i(446, "S$EH")](
-                            r[s(-126, "!&EH")](r[s(-387, "IUs7")](c, a["_\xea"][f]), a["_\xea"][d]),
-                            a["_\xea"][p],
-                        ),
-                        a["_\xea"][h],
-                    );
-                    continue;
-                case "3":
-                    d = r[s(-150, "ea1u")](
-                        r[i(440, "8Oiv")](
-                            r[s(-322, "qy3r")](a["_\xea"][r[s(-120, ")goq")](a[i(686, "ehxd")], 2)], 3),
-                            4,
-                        ),
-                        r[s(-194, "l3WP")](a["_\xea"][r[i(696, "M#pd")](a[s(-101, "iU!(")], 1)], 4),
-                    );
-                    continue;
-                case "4":
-                    r[i(469, "M#pd")](isNaN, a["_\xea"][r[i(543, "S$EH")](a[s(-328, "lqr!")], 1)])
-                        ? (p = h = 64)
-                        : r[i(580, "v6]c")](isNaN, a["_\xea"][a[i(621, "HmRp")]]) && (h = 64);
-                    continue;
-                case "5":
-                    a[s(-393, "wReF")] -= 3;
-                    continue;
-                case "6":
-                    r[i(490, ")FA3")](void 0 === n ? "undefined" : "function", r[i(605, "iU!(")]) &&
-                        ((f = r[i(437, "iSBn")](n, f, x)),
-                        (d = r[i(411, "iU!(")](n, d, x)),
-                        (p = r[s(-161, "iSBn")](n, p, x)),
-                        (h = r[s(-64, "v6]c")](n, h, x)));
-                    continue;
-                case "7":
-                    a["_\xe1"](o[i(635, "1F4e")]());
-                    continue;
-                case "8":
-                    a["_\xe1"](o[s(-296, ")goq")]());
-                    continue;
-                case "9":
-                    h = r[i(608, "wReF")](a["_\xea"][a[s(-184, "lxO1")]], 63);
-                    continue;
-                case "10":
-                    a["_\xe1"](o[i(695, "IUs7")]());
-                    continue;
-            }
-            break;
-        }
     return r[i(602, "7s0V")](c[i(544, "icaT")](/=/g, ""), v[x] || "");
 };
 

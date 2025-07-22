@@ -1,6 +1,6 @@
 {
-  "dependencies": {
-    "crypto-js": "^4.2.0",
-    "js-sha256": "^0.11.1"
-  }
+    "dependencies": {
+        "crypto-js": "^4.2.0",
+        "js-sha256": "^0.11.1"
+    }
 }

@@ -9,17 +9,14 @@ window.dumpObject = (obj, name) => {
             return v;
         });
 
-    const formatted = Object.entries(obj)
-        .map(([key, value]) => `  ${key}: ${safeStringify(value)}`)
-        .join(",\n");
+    const valuesArray = Object.values(obj).map((v) => safeStringify(v));
 
-    const varName = name || "obj";
-    const result = `${varName} = {\n${formatted}\n};`;
+    const varName = name || "valuesArray";
+    const result = `${varName} = [\n  ${valuesArray.join(",\n  ")}\n];`;
+
     copy(result);
-    console.log(`✅ Copied ${varName} to clipboard`);
+    console.log(`✅ Copied ${varName} (only values) to clipboard`);
 };
 
 // usage
-dumpObject(t, "t");
-dumpObject(n, "n");
-dumpObject(i, "i");
+dumpObject(_0x576afd, "windowValues");
