@@ -44,7 +44,14 @@ class BaseProblemClient:
                 method, url, params=payload, headers=headers
             )
         else:
-            response = self.session.request(method, url, json=payload, headers=headers)
+            if extra_params:
+                from urllib.parse import urlencode
+
+                url = f"{url}?{urlencode(extra_params)}"
+            body_params = {"page": str(page)}
+            response = self.session.request(
+                method, url, json=body_params, headers=headers
+            )
 
         response.raise_for_status()
         return response.json()
