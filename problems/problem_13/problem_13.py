@@ -1,32 +1,30 @@
 import subprocess, json
 
-import json
-
 from problems.base_client import BaseProblemClient
 
 
-# https://deobfuscate.relative.im
-class Problem8Client(BaseProblemClient):
+class Problem13Client(BaseProblemClient):
     def __init__(self):
-        super().__init__(8)
+        super().__init__(13)
 
     def get_page_sum(self, page):
         result = subprocess.check_output(
-            [
-                "node",
-                "problems/problem_8/generate_params.js",
-                str(page),
-            ],
+            ["node", "problems/problem_13/generate_params.js", str(page)],
             text=True,
         )
         params = json.loads(result)
-        extra_headers = {"t": str(params["t"]), "m": str(params["m"])}
-        self.session.cookies.set("s", str(params["s"]))
+        extra_headers = {
+            "t": str(params["t"]),
+            "r": str(params["r"]),
+            "s": str(params["s"]),
+        }
         data = self.make_request(
             method="POST",
             page=page,
             extra_headers=extra_headers,
         )
+        print(data)
+        breakpoint()
         return sum(data.get("current_array", []))
 
     def calculate_total(self):
@@ -39,7 +37,7 @@ class Problem8Client(BaseProblemClient):
 
 
 if __name__ == "__main__":
-    client = Problem8Client()
+    client = Problem13Client()
     total = client.calculate_total()
     print("\n=== FINAL RESULT ===")
     print(f"Total sum = {total}")

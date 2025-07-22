@@ -17,12 +17,12 @@ class Problem9Client(BaseProblemClient):
             text=True,
         )
         params = json.loads(result)
-        playload = {"page": page, "tt": str(params["tt"]), "m": str(params["m"])}
-        response = self.session.post(
-            f"{self.BASE_URL}/{self.problem_id}/data/",
-            json=playload,
+        extra_params = {"tt": str(params["tt"]), "m": str(params["m"])}
+        data = self.make_request(
+            method="POST",
+            page=page,
+            extra_params=extra_params,
         )
-        data = response.json()
         return sum(data.get("current_array", []))
 
     def calculate_total(self):

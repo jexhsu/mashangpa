@@ -29,16 +29,23 @@ class BaseProblemClient:
         self.session.verify = False
 
     def make_request(self, method="GET", page=1, extra_params=None, extra_headers=None):
-        url = f"{self.BASE_URL}/{self.problem_id}/data"
-        params = {"page": page}
-        headers = {}
+        url = f"{self.BASE_URL}/{self.problem_id}/data/"
 
-        if extra_params:
-            params.update(extra_params)
+        headers = {}
         if extra_headers:
             headers.update(extra_headers)
 
-        response = self.session.request(method, url, params=params, headers=headers)
+        payload = {"page": f"{page}"}
+        if extra_params:
+            payload.update(extra_params)
+
+        if method.upper() == "GET":
+            response = self.session.request(
+                method, url, params=payload, headers=headers
+            )
+        else:
+            response = self.session.request(method, url, json=payload, headers=headers)
+
         response.raise_for_status()
         return response.json()
 

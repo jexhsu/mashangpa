@@ -13,11 +13,11 @@ class Problem5Client(BaseProblemClient):
         ts = int(time.time() * 1000)
         payload = {"page": page, "_ts": ts}
         xl = self.aes_encrypt(payload, self.KEY, self.IV)
-
-        response = self.session.post(
-            f"{self.BASE_URL}/{self.problem_id}/data/", json={"xl": xl}
+        data = self.make_request(
+            method="POST",
+            page=page,
+            extra_params={"xl": xl},
         )
-        data = response.json()
         return sum(data.get("current_array", []))
 
     def calculate_total(self):
