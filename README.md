@@ -19,5 +19,5 @@ cd mashangpa
 pip install -r requirements.txt
 
 # Run a problem solution, e.g. Problem 16
-python problems/problem_16/problem_16.py
+python -m problems/problem_16/problem_16.py
 ```
