@@ -19,4 +19,4 @@ window.dumpObject = (obj, name) => {
 };
 
 // usage
-dumpObject(_0x576afd, "windowValues");
+dumpObject(_$t, "_$a04afa8c");
